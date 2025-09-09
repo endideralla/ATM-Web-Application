@@ -1,0 +1,20 @@
+Task Description: ATM Web Application
+For this task, we’d like you to build a Web application that simulates the basic functionalities of an ATM (cash machine). 
+It doesn’t need to be super complex, but it should cover the basics:
+- User login (can be a simple demo, no need for high security)
+- View account balance
+- Simulate withdrawing and depositing money
+- Transaction history
+
+What technologies we expect:
+- Front-end: Angular, React, or any other modern framework you're comfortable with.
+- Back-end: .NET, Java, or another backend technology(Firebase, AWS) of your choice to build the APIs.
+
+We’d like you to use Git for version controland keep your code hosted on GitHub (or a similar platform). 
+Make sure your commits are clear and meaningful so we can follow your development process.
+
+👉 Big bonus: If you manage to deploy the application (for example, on platforms like Vercel, Netlify, Azure, or others) 
+and share the live link along with your GitHub repo, that will be highly appreciated!
+
+Extra features (like nice design, extra functionalities, etc.) are welcome, but the main focus is to understand 
+how you structure the app, your code quality, and your development approach.
