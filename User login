@@ -1,0 +1,44 @@
+using System;
+
+class Program
+{
+    static string username = "user";    // demo username
+    static string password = "1234";    // demo password
+
+    static void Main()
+    {
+        Console.WriteLine("=== User Login Demo ===");
+
+        if (Login())
+        {
+            Console.WriteLine("Welcome to the system!");
+        }
+        else
+        {
+            Console.WriteLine("Too many failed attempts. Exiting...");
+        }
+    }
+
+    static bool Login()
+    {
+        int attempts = 0;
+        while (attempts < 3) // allow max 3 tries
+        {
+            Console.Write("Enter username: ");
+            string inputUser = Console.ReadLine();
+
+            Console.Write("Enter password: ");
+            string inputPass = Console.ReadLine();
+
+            if (inputUser == username && inputPass == password)
+            {
+                Console.WriteLine("Login successful!");
+                return true;
+            }
+
+            Console.WriteLine("Incorrect username or password.");
+            attempts++;
+        }
+        return false;
+    }
+}
