@@ -1,0 +1,19 @@
+using System;
+
+class Program
+{
+    // Simulated account balance
+    static decimal balance = 1000.00m; // starting balance
+
+    static void Main()
+    {
+        Console.WriteLine("=== View Account Balance Demo ===");
+
+        ViewBalance();
+    }
+
+    static void ViewBalance()
+    {
+        Console.WriteLine($"Your current balance is: {balance:C}");
+    }
+}
