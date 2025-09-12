@@ -1,0 +1,109 @@
+using System;
+using System.Collections.Generic;
+
+class Program
+{
+    static decimal balance = 1000.00m; // starting balance
+    static List<string> transactionHistory = new List<string>();
+
+    static void Main()
+    {
+        Console.WriteLine("=== Transaction History Demo ===");
+        bool running = true;
+
+        while (running)
+        {
+            Console.WriteLine("\n--- Menu ---");
+            Console.WriteLine("1. View Balance");
+            Console.WriteLine("2. Deposit Money");
+            Console.WriteLine("3. Withdraw Money");
+            Console.WriteLine("4. View Transaction History");
+            Console.WriteLine("5. Exit");
+            Console.Write("Choose an option: ");
+
+            string choice = Console.ReadLine();
+
+            switch (choice)
+            {
+                case "1":
+                    ViewBalance();
+                    break;
+                case "2":
+                    Deposit();
+                    break;
+                case "3":
+                    Withdraw();
+                    break;
+                case "4":
+                    ShowTransactionHistory();
+                    break;
+                case "5":
+                    running = false;
+                    break;
+                default:
+                    Console.WriteLine("Invalid choice, try again.");
+                    break;
+            }
+        }
+    }
+
+    static void ViewBalance()
+    {
+        Console.WriteLine($"Your current balance is: {balance:C}");
+    }
+
+    static void Deposit()
+    {
+        Console.Write("Enter amount to deposit: ");
+        if (decimal.TryParse(Console.ReadLine(), out decimal amount) && amount > 0)
+        {
+            balance += amount;
+            string record = $"{DateTime.Now}: Deposited {amount:C}. New Balance: {balance:C}";
+            transactionHistory.Add(record);
+            Console.WriteLine(record);
+        }
+        else
+        {
+            Console.WriteLine("Invalid amount.");
+        }
+    }
+
+    static void Withdraw()
+    {
+        Console.Write("Enter amount to withdraw: ");
+        if (decimal.TryParse(Console.ReadLine(), out decimal amount) && amount > 0)
+        {
+            if (amount <= balance)
+            {
+                balance -= amount;
+                string record = $"{DateTime.Now}: Withdrew {amount:C}. New Balance: {balance:C}";
+                transactionHistory.Add(record);
+                Console.WriteLine(record);
+            }
+            else
+            {
+                Console.WriteLine("Insufficient funds.");
+            }
+        }
+        else
+        {
+            Console.WriteLine("Invalid amount.");
+        }
+    }
+
+    static void ShowTransactionHistory()
+    {
+        Console.WriteLine("\n--- Transaction History ---");
+        if (transactionHistory.Count == 0)
+        {
+            Console.WriteLine("No transactions yet.");
+        }
+        else
+        {
+            foreach (string record in transactionHistory)
+            {
+                Console.WriteLine(record);
+            }
+        }
+    }
+}
