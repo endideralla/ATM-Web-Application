@@ -1,0 +1,83 @@
+using System;
+
+class Program
+{
+    static decimal balance = 1000.00m; // starting balance
+
+    static void Main()
+    {
+        Console.WriteLine("=== Deposit & Withdraw Demo ===");
+        bool running = true;
+
+        while (running)
+        {
+            Console.WriteLine("\n--- Menu ---");
+            Console.WriteLine("1. View Balance");
+            Console.WriteLine("2. Deposit Money");
+            Console.WriteLine("3. Withdraw Money");
+            Console.WriteLine("4. Exit");
+            Console.Write("Choose an option: ");
+
+            string choice = Console.ReadLine();
+
+            switch (choice)
+            {
+                case "1":
+                    ViewBalance();
+                    break;
+                case "2":
+                    Deposit();
+                    break;
+                case "3":
+                    Withdraw();
+                    break;
+                case "4":
+                    running = false;
+                    break;
+                default:
+                    Console.WriteLine("Invalid choice, try again.");
+                    break;
+            }
+        }
+    }
+
+    static void ViewBalance()
+    {
+        Console.WriteLine($"Your current balance is: {balance:C}");
+    }
+
+    static void Deposit()
+    {
+        Console.Write("Enter amount to deposit: ");
+        if (decimal.TryParse(Console.ReadLine(), out decimal amount) && amount > 0)
+        {
+            balance += amount;
+            Console.WriteLine($"Successfully deposited {amount:C}. New balance: {balance:C}");
+        }
+        else
+        {
+            Console.WriteLine("Invalid amount.");
+        }
+    }
+
+    static void Withdraw()
+    {
+        Console.Write("Enter amount to withdraw: ");
+        if (decimal.TryParse(Console.ReadLine(), out decimal amount) && amount > 0)
+        {
+            if (amount <= balance)
+            {
+                balance -= amount;
+                Console.WriteLine($"Successfully withdrew {amount:C}. New balance: {balance:C}");
+            }
+            else
+            {
+                Console.WriteLine("Insufficient funds.");
+            }
+        }
+        else
+        {
+            Console.WriteLine("Invalid amount.");
+        }
+    }
+}
