@@ -1,69 +1,30 @@
 using System;
 
-class Program
+public class SimulateDepositingAndWithdrawingMoney
 {
-    static decimal balance = 1000.00m; // starting balance
+    private decimal balance;
 
-    static void Main()
+    public SimulateDepositingAndWithdrawingMoney(decimal startingBalance)
     {
-        Console.WriteLine("=== Deposit & Withdraw Demo ===");
-        bool running = true;
-
-        while (running)
-        {
-            Console.WriteLine("\n--- Menu ---");
-            Console.WriteLine("1. View Balance");
-            Console.WriteLine("2. Deposit Money");
-            Console.WriteLine("3. Withdraw Money");
-            Console.WriteLine("4. Exit");
-            Console.Write("Choose an option: ");
-
-            string choice = Console.ReadLine();
-
-            switch (choice)
-            {
-                case "1":
-                    ViewBalance();
-                    break;
-                case "2":
-                    Deposit();
-                    break;
-                case "3":
-                    Withdraw();
-                    break;
-                case "4":
-                    running = false;
-                    break;
-                default:
-                    Console.WriteLine("Invalid choice, try again.");
-                    break;
-            }
-        }
+        balance = startingBalance;
     }
 
-    static void ViewBalance()
+    public void Deposit(decimal amount)
     {
-        Console.WriteLine($"Your current balance is: {balance:C}");
-    }
-
-    static void Deposit()
-    {
-        Console.Write("Enter amount to deposit: ");
-        if (decimal.TryParse(Console.ReadLine(), out decimal amount) && amount > 0)
+        if (amount > 0)
         {
             balance += amount;
             Console.WriteLine($"Successfully deposited {amount:C}. New balance: {balance:C}");
         }
         else
         {
-            Console.WriteLine("Invalid amount.");
+            Console.WriteLine("Invalid deposit amount.");
         }
     }
 
-    static void Withdraw()
+    public void Withdraw(decimal amount)
     {
-        Console.Write("Enter amount to withdraw: ");
-        if (decimal.TryParse(Console.ReadLine(), out decimal amount) && amount > 0)
+        if (amount > 0)
         {
             if (amount <= balance)
             {
@@ -77,7 +38,12 @@ class Program
         }
         else
         {
-            Console.WriteLine("Invalid amount.");
+            Console.WriteLine("Invalid withdrawal amount.");
         }
+    }
+
+    public decimal GetBalance()
+    {
+        return balance;
     }
 }
