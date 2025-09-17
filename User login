@@ -1,25 +1,11 @@
 using System;
 
-class Program
+public class UserLogin
 {
     static string username = "user";    // demo username
     static string password = "1234";    // demo password
 
-    static void Main()
-    {
-        Console.WriteLine("=== User Login Demo ===");
-
-        if (Login())
-        {
-            Console.WriteLine("Welcome to the system!");
-        }
-        else
-        {
-            Console.WriteLine("Too many failed attempts. Exiting...");
-        }
-    }
-
-    static bool Login()
+    public static bool Login()
     {
         int attempts = 0;
         while (attempts < 3) // allow max 3 tries
