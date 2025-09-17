@@ -11,12 +11,12 @@ public class UserLogin
         while (attempts < 3) // allow max 3 tries
         {
             Console.Write("Enter username: ");
-            string inputUser = Console.ReadLine();
+            string? inputUser = Console.ReadLine();
 
             Console.Write("Enter password: ");
-            string inputPass = Console.ReadLine();
+            string? inputPass = Console.ReadLine();
 
-            if (inputUser == username && inputPass == password)
+            if (!string.IsNullOrEmpty(inputUser) && !string.IsNullOrEmpty(inputPass) && inputUser == username && inputPass == password)
             {
                 Console.WriteLine("Login successful!");
                 return true;
