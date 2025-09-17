@@ -1,19 +1,22 @@
 using System;
 
-class Program
+public class ViewAccountBalance
 {
-    // Simulated account balance
-    static decimal balance = 1000.00m; // starting balance
+    private decimal balance;
 
-    static void Main()
+    public ViewAccountBalance(decimal startingBalance)
     {
-        Console.WriteLine("=== View Account Balance Demo ===");
-
-        ViewBalance();
+        balance = startingBalance;
     }
 
-    static void ViewBalance()
+    public void ShowBalance()
     {
         Console.WriteLine($"Your current balance is: {balance:C}");
+    }
+
+    // Optionally allow updating balance
+    public void UpdateBalance(decimal newBalance)
+    {
+        balance = newBalance;
     }
 }
